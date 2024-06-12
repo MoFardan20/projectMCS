@@ -46,7 +46,14 @@ class SignupPage : AppCompatActivity() {
                 return false
             }
 
+            if (dbHelper.findUserByUsername(username)) {
+                Toast.makeText(this, "Username already taken", Toast.LENGTH_SHORT).show()
+                return false
+            }
 
+            if(password.length < 8){
+                Toast.makeText(this, "Password must be 8 character at least", Toast.LENGTH_SHORT).show()
+            }
 
             if(!password.equals(cpassword)){
                 Toast.makeText(this, "password do not match", Toast.LENGTH_SHORT).show()
@@ -55,15 +62,14 @@ class SignupPage : AppCompatActivity() {
 
             var validateEmail = Patterns.EMAIL_ADDRESS.matcher(email).matches()
             if(!validateEmail || !email.endsWith("@puff.com")){
-                return false
-            }else if(email.isEmpty()){
-                Toast.makeText(this, "email must be filled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email must ends with '@puff.com' ", Toast.LENGTH_SHORT).show()
                 return false
             }
 
             var validatePhone = Patterns.PHONE.matcher(phone).matches()
             var len = phone.length
             if(!validatePhone || len<11 || len>13){
+                Toast.makeText(this, "Phone number must between 11 to 13 character", Toast.LENGTH_SHORT).show()
                 return false
             }else if(phone.isEmpty()){
                 Toast.makeText(this, "phone number must be filled", Toast.LENGTH_SHORT).show()
@@ -83,7 +89,7 @@ class SignupPage : AppCompatActivity() {
         binding.btnRegister.setOnClickListener{
             if(validate()){
                 val username = binding.etUsername.text.toString()
-                val password = binding.etUsername.text.toString()
+                val password = binding.etPassword.text.toString()
                 val email= binding.etEmail.text.toString()
                 val phone = binding.etPhone.text.toString()
 

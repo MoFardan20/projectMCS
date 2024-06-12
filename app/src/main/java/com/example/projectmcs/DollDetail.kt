@@ -30,11 +30,13 @@ class DollDetail : AppCompatActivity() {
         priceDoll = findViewById(R.id.priceDoll)
         buyButton = findViewById(R.id.buyButton)
 
+
         val img = intent.getStringExtra("image")
         val name = intent.getStringExtra("name")
         val rating = intent.getStringExtra("rating")
         val desc = intent.getStringExtra("desc")
         val price = intent.getStringExtra("price")
+        val size = intent.getStringExtra("size")
 
 
         nameDoll.text = name

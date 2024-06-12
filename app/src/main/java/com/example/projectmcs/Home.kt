@@ -54,6 +54,7 @@ class Home : Fragment() {
                             intent.putExtra("price", item.price)
                             intent.putExtra("rating", item.rating)
                             intent.putExtra("image", item.imageLink)
+                            intent.putExtra("size", item.size)
 
                             startActivity(intent)
                         }
@@ -81,8 +82,8 @@ class Home : Fragment() {
                 val name = dollObject.getString("name")
                 val desc = dollObject.getString("desc")
                 val size = dollObject.getString("size")
-                val price = dollObject.getString("price")
-                val rating = dollObject.getString("rating")
+                val price = dollObject.getDouble("price")
+                val rating = dollObject.getDouble("rating")
                 val image = dollObject.getString("imageLink")  // Changed to getString
                 dollList.add(Doll(name,desc, size, price, rating, image))
             }
