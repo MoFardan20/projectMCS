@@ -17,6 +17,7 @@ class DollDetail : AppCompatActivity() {
     private lateinit var descDoll: TextView
     private lateinit var priceDoll: TextView
     private lateinit var buyButton: Button
+    private lateinit var sizeDoll: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,7 @@ class DollDetail : AppCompatActivity() {
         descDoll = findViewById(R.id.descDoll)
         priceDoll = findViewById(R.id.priceDoll)
         buyButton = findViewById(R.id.buyButton)
+        sizeDoll = findViewById(R.id.sizeDoll)
 
 
         val img = intent.getStringExtra("image")
@@ -40,7 +42,8 @@ class DollDetail : AppCompatActivity() {
 
 
         nameDoll.text = name
-        ratingDoll.text = rating
+        sizeDoll.text = size
+        ratingDoll.text = "/ $rating"
         descDoll.text = desc
         priceDoll.text = "Rp $price,00"
 
