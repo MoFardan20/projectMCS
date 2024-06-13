@@ -42,9 +42,12 @@ class LoginPage : AppCompatActivity() {
             Log.d("password",cpassword.toString())
             if (cpassword == password){
                 Log.d("masuk","data benar")
-                var intent= Intent(this,MainActivity::class.java)
+                var phone = dbHelper.getPhoneByUsername(username)
+                dbHelper.getUserDetails(username, password)
+                var intent= Intent(this,OTP::class.java)
+                intent.putExtra("phone", phone)
                 startActivity(intent)
-                Toast.makeText(this, "Login Succesfull", Toast.LENGTH_SHORT).show()
+
             }
 
         }else{
@@ -52,4 +55,6 @@ class LoginPage : AppCompatActivity() {
         }
 
     }
+
+
 }

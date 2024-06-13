@@ -99,6 +99,25 @@ class DBHelper (context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
         return password
     }
 
+    fun getPhoneByUsername(username: String): String? {
+        val db = readableDatabase
+        val selection = "$COLUMN_USERNAME = ?"
+        val selectionArgs = arrayOf(username)
+        val cursor = db.query(TABLE_NAME, arrayOf(COLUMN_PHONE), selection, selectionArgs, null, null, null)
+
+        var phone: String? = null
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                phone = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PHONE))
+            }
+            cursor.close()
+        }
+
+        db.close()
+        return phone
+    }
+
 
 
 

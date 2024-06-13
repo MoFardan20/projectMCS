@@ -17,6 +17,8 @@ class Profile : Fragment() {
     lateinit var email: String
     var phone: Int = 0
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,10 +41,13 @@ class Profile : Fragment() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
+
         val sharedPreferences = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val tvUsername: TextView = view.findViewById(R.id.tvUsername)
         val tvEmail: TextView = view.findViewById(R.id.tvEmail)
         val tvPhone: TextView = view.findViewById(R.id.tvPhone)
+
+
 
 
 
